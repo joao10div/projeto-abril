@@ -1,0 +1,263 @@
+body {
+  background-color: #eaeaea;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.casa {
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+/* Telhado */
+.telhado {
+  width: 600px;
+  height: 100px;
+  background-color: #884513;
+  transform: rotateX(45deg);
+  transform-origin: top;
+}
+
+/* Parede */
+.parede {
+  width: 600px;
+  height: 400px;
+  background-color: #F5DEB3;
+  position: relative;
+  border: 10px solid #884513;
+}
+
+/* Janela */
+.janela {
+  width: 100px;
+  height: 100px;
+  background-color: #87CEEB;
+  border: 5px solid #8B4513;
+  position: absolute;
+  top: 50px;
+  overflow: hidden;
+}
+
+.janela1 {
+  left: 80px;
+}
+
+.janela2 {
+  right: 80px;
+}
+
+.cortina {
+  width: 100%;
+  height: 100%;
+  background-color: #964B00;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  transform: translateX(-100%);
+}
+
+.janela2 .cortina {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+
+.cortina.fechada {
+  transform: translateX(0) !important;
+}
+
+/* Porta */
+.porta {
+  width: 80px;
+  height: 160px;
+  background-color: #8B4513;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+
+.porta.aberta {
+  transform: rotateY(-90deg);
+}
+
+/* Móveis */
+.moveis {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sofá */
+.sofa {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 200px;
+  height: 80px;
+  background-color: #4A90E2;
+  border-radius: 10px;
+}
+
+/* Mesa com abajur */
+.mesa {
+  position: absolute;
+  bottom: 50px;
+  right: 150px;
+  width: 120px;
+  height: 120px;
+  background-color: #8B4513;
+  border-radius: 50%;
+}
+
+/* Abajur */
+.abajur {
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  width: 60px;
+  height: 80px;
+}
+
+.abajur-base {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 40px;
+  background-color: #696969;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.abajur-cupula {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 40px;
+  background-color: #DEB887;
+  border-radius: 30px 30px 0 0;
+  transition: all 0.3s;
+}
+
+.abajur.aceso .abajur-cupula {
+  background-color: #FFF5CC;
+  box-shadow: 0 0 20px rgba(255, 245, 204, 0.7);
+}
+
+/* Luz do teto */
+.luz-teto {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 10px;
+  background-color: #333;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+
+.luz-teto::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    #333 0%, #333 10%,
+    transparent 10%, transparent 20%,
+    #333 20%, #333 30%,
+    transparent 30%, transparent 40%,
+    #333 40%, #333 50%,
+    transparent 50%, transparent 60%,
+    #333 60%, #333 70%,
+    transparent 70%, transparent 80%,
+    #333 80%, #333 90%,
+    transparent 90%, transparent 100%);
+}
+
+.luz-teto.acesa {
+  background-color: #FFF5CC;
+  box-shadow: 0 0 20px #FFF5CC;
+}
+
+.luz-teto.acesa::before {
+  background: linear-gradient(90deg,
+    #FFF5CC 0%, #FFF5CC 10%,
+    transparent 10%, transparent 20%,
+    #FFF5CC 20%, #FFF5CC 30%,
+    transparent 30%, transparent 40%,
+    #FFF5CC 40%, #FFF5CC 50%,
+    transparent 50%, transparent 60%,
+    #FFF5CC 60%, #FFF5CC 70%,
+    transparent 70%, transparent 80%,
+    #FFF5CC 80%, #FFF5CC 90%,
+    transparent 90%, transparent 100%);
+}
+
+/* TV */
+.tv {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 90px;
+  background-color: #333;
+  border: 5px solid #000;
+  transition: all 0.3s;
+}
+
+.tv.ligada {
+  background-color: #4A90E2;
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+}
+
+/* Geladeira */
+.geladeira {
+  position: absolute;
+  bottom: 50px;
+  right: 30px;
+  width: 80px;
+  height: 160px;
+  background-color: #C0C0C0;
+  border: 3px solid #999;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+  transform-origin: left;
+}
+
+.geladeira.aberta {
+  transform: rotateY(-90deg);
+}
+
+/* Controles */
+.controles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #357ABD;
+  transform: scale(1.05);
+}

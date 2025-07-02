@@ -1,0 +1,105 @@
+:root {
+  --bg-color: #fff5f5;
+  --text-color: #3a0d0d;
+  --card-bg: #ffe0e0;
+  --button-bg: #e63946;
+  --button-hover: #d62828;
+  --button-text: #fff;
+}
+
+body.dark {
+  --bg-color: #2b1212;
+  --text-color: #fff0f0;
+  --card-bg: #3d1e1e;
+  --button-bg: #ff6b6b;
+  --button-hover: #ff4d4d;
+  --button-text: #fff;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+header {
+  background: var(--card-bg);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+#toggleTheme {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.formulario {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.formulario input,
+.formulario button {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.formulario button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.formulario button:hover {
+  background-color: var(--button-hover);
+}
+
+.grade-desejos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.cartao-desejo {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.cartao-desejo:hover {
+  transform: scale(1.03);
+}
+
+.cartao-desejo a {
+  text-decoration: none;
+  color: var(--button-bg);
+  font-weight: bold;
+}

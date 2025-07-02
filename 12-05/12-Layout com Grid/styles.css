@@ -1,0 +1,59 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte como Arial */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove preenchimentos padrão */
+    min-height: 100vh; /* Faz o body ocupar toda a altura da tela */
+    display: flex; /* Usa Flexbox para centralizar o layout */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    background-color: #f4f4f4; /* Cor de fundo da página (cinza claro) */
+}
+/* Estilo para o container do layout */
+.grid-container {
+    display: grid; /* Usa Grid para organizar o layout */
+    grid-template-columns: 200px 1fr; /* Define duas colunas: uma fixa e uma flexível */
+    grid-template-rows: auto 1fr auto; /* Define três linhas: cabeçalho, conteúdo e rodapé */
+    gap: 15px; /* Adiciona um espaçamento entre as áreas */
+    width: 90%; /* Define uma largura para o container */
+    max-width: 1200px; /* Define uma largura máxima */
+    height: 80vh; /* Define uma altura para o container */
+    background-color: #fff; /* Cor de fundo do container (branco) */
+    padding: 20px; /* Adiciona um espaçamento interno de 20px */
+    border-radius: 10px; /* Arredonda as bordas do container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+}
+/* Estilo para o cabeçalho */
+.header {
+    grid-column: 1 / -1; /* Faz o cabeçalho ocupar todas as colunas */
+    background-color: #3498db; /* Cor de fundo do cabeçalho (azul) */
+    color: #fff; /* Cor do texto (branco) */
+    padding: 15px; /* Adiciona um espaçamento interno de 15px */
+    text-align: center; /* Centraliza o texto */
+    border-radius: 8px; /* Arredonda as bordas do cabeçalho */
+}
+
+/* Estilo para o menu lateral */
+.sidebar {
+    background-color: #2c3e50; /* Cor de fundo do menu lateral (azul escuro) */
+    color: #fff; /* Cor do texto (branco) */
+    padding: 15px; /* Adiciona um espaçamento interno de 15px */
+    border-radius: 8px; /* Arredonda as bordas do menu lateral */
+}
+
+/* Estilo para o conteúdo principal */
+.main-content {
+    background-color: #ecf0f1; /* Cor de fundo do conteúdo principal (cinza claro) */
+    padding: 15px; /* Adiciona um espaçamento interno de 15px */
+    border-radius: 8px; /* Arredonda as bordas do conteúdo principal */
+}
+
+/* Estilo para o rodapé */
+.footer {
+    grid-column: 1 / -1; /* Faz o rodapé ocupar todas as colunas */
+    background-color: #34495e; /* Cor de fundo do rodapé (cinza escuro) */
+    color: #fff; /* Cor do texto (branco) */
+    padding: 15px; /* Adiciona um espaçamento interno de 15px */
+    text-align: center; /* Centraliza o texto */
+    border-radius: 8px; /* Arredonda as bordas do rodapé */
+}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cofrinho Digital</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #eee;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Fundo animado preto e branco */
+    .fundo-animado {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      transition: background 1s ease;
+    }
+
+    .fundo1 {
+      background: linear-gradient(135deg, #000000 0%, #444444 100%);
+    }
+
+    .fundo2 {
+      background: linear-gradient(135deg, #111111 0%, #888888 100%);
+    }
+
+    .fundo3 {
+      background: linear-gradient(135deg, #222222 0%, #bbbbbb 100%);
+    }
+
+    /* Container centralizado */
+    .cofre-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #121212;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+      width: 350px;
+      max-width: 90vw;
+      text-align: center;
+    }
+
+    /* Título */
+    .cofre-container h1 {
+      margin-bottom: 25px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #f5f5f5;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    /* Input */
+    input[type="number"] {
+      width: 80%;
+      padding: 12px;
+      font-size: 18px;
+      border: 2px solid #555;
+      border-radius: 8px;
+      background-color: #222;
+      color: #eee;
+      outline: none;
+      transition: border-color 0.3s;
+      margin-bottom: 15px;
+    }
+
+    input[type="number"]:focus {
+      border-color: #fff;
+    }
+
+    /* Botões */
+    button {
+      padding: 12px 22px;
+      margin: 5px 10px 0 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 0 10px transparent;
+    }
+
+    button:hover {
+      box-shadow: 0 0 10px #fff;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    /* Salvar botão */
+    button:not(.zerar) {
+      background-color: #444;
+      color: #eee;
+    }
+
+    button:not(.zerar):hover {
+      background-color: #666;
+    }
+
+    /* Botão zerar */
+    button.zerar {
+      background-color: #aa0000;
+      color: #eee;
+    }
+
+    button.zerar:hover {
+      background-color: #cc2222;
+    }
+
+    /* Total */
+    #total {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 8px #fff;
+    }
+
+    /* Lista valores */
+    #lista-valores {
+      margin-top: 20px;
+      max-height: 180px;
+      overflow-y: auto;
+      background: #222;
+      border-radius: 10px;
+      padding: 10px 15px;
+      box-shadow: inset 0 0 10px #000;
+      text-align: left;
+      border: 1px solid #444;
+    }
+
+    #lista-valores h3 {
+      color: #ddd;
+      margin-bottom: 10px;
+      font-weight: 600;
+      user-select: text;
+    }
+
+    /* Lista itens */
+    #valoresLista {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #valoresLista li {
+      background-color: #333;
+      border-radius: 7px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #eee;
+      box-shadow: 0 0 5px #000 inset;
+      user-select: text;
+    }
+
+    /* Scroll estilizado para Webkit */
+    #lista-valores::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #lista-valores::-webkit-scrollbar-track {
+      background: #111;
+      border-radius: 10px;
+    }
+
+    #lista-valores::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 10px;
+    }
+
+    #lista-valores::-webkit-scrollbar-thumb:hover {
+      background: #777;
+    }
+  </style>
+</head>
+<body onclick="mudarFundo()">
+
+  <div class="fundo-animado fundo1" id="fundo"></div>
+
+  <div class="cofre-container">
+    <h1>💰 Cofrinho Digital 💰</h1>
+
+    <input type="number" id="valorInput" placeholder="Digite um valor para guardar" min="0" />
+
+    <div>
+      <button onclick="adicionarValor()">Salvar</button>
+      <button class="zerar" onclick="zerarCofrinho()">Zerar</button>
+    </div>
+
+    <p id="total">Total guardado: R$ 0,00</p>
+
+    <div id="lista-valores">
+      <h3>Valores guardados:</h3>
+      <ul id="valoresLista"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Variável para controlar o fundo atual
+    let fundoIndex = 1;
+    const fundoElement = document.getElementById('fundo');
+
+    function mudarFundo() {
+      fundoIndex++;
+      if (fundoIndex > 3) fundoIndex = 1;
+
+      fundoElement.className = 'fundo-animado fundo' + fundoIndex;
+    }
+
+    // Função para formatar valor em R$
+    function formatarReal(valor) {
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // Recuperar valores do localStorage ou criar array vazio
+    let valores = JSON.parse(localStorage.getItem('valoresCofrinho')) || [];
+
+    // Mostrar lista e total na tela
+    function atualizarTela() {
+      const listaUl = document.getElementById('valoresLista');
+      listaUl.innerHTML = '';
+
+      let total = 0;
+      valores.forEach(valor => {
+        total += valor;
+        const li = document.createElement('li');
+        li.textContent = formatarReal(valor);
+        listaUl.appendChild(li);
+      });
+
+      document.getElementById('total').textContent = 'Total guardado: ' + formatarReal(total);
+    }
+
+    // Adicionar valor novo
+    function adicionarValor() {
+      const input = document.getElementById('valorInput');
+      let valor = Number(input.value);
+
+      if (isNaN(valor) || valor <= 0) {
+        alert('Por favor, digite um valor válido maior que zero.');
+        return;
+      }
+
+      valores.push(valor);
+      localStorage.setItem('valoresCofrinho', JSON.stringify(valores));
+
+      input.value = '';
+      atualizarTela();
+    }
+
+    // Zerar cofrinho
+    function zerarCofrinho() {
+      if (confirm('Tem certeza que deseja zerar o cofrinho?')) {
+        valores = [];
+        localStorage.removeItem('valoresCofrinho');
+        atualizarTela();
+      }
+    }
+
+    // Inicializa tela com valores salvos
+    atualizarTela();
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Centralizado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button onclick="onOpen()" class="open-btn">Abrir Modal</button>
+
+    <div class="overlay container">
+        <div class="modal">
+            <h2>Este é um Modal</h2>
+            <p>Paris é a capital da França, famosa por sua história, arte, arquitetura e cultura. Conhecida como a "Cidade Luz", abriga pontos turísticos como a Torre Eiffel e o Museu do Louvre, sendo um dos destinos mais visitados do mundo.</p>
+            <button onclick="onClose()" class="close-btn">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.querySelector('.container');
+
+        function onOpen(){
+            modal.classList.add('active');
+        }
+
+        function onClose(){
+            modal.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+#powerButton {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#powerButton:hover {
+  background-color: #555;
+}
+
+#light {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #222;
+  box-shadow: 0 0 10px #111;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#light.acesa {
+  background-color: #ffff33;
+  box-shadow: 0 0 60px 25px #ffff33;
+}

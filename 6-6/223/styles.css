@@ -1,0 +1,127 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body: preto e relativo para canvas */
+body {
+  overflow: hidden;
+  height: 100vh;
+  background-color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  color: black;
+}
+
+/* Canvas que cobre tudo */
+#snow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Container branco centralizado */
+.container {
+  position: relative;
+  background-color: white;
+  max-width: 400px;
+  width: 90vw;
+  padding: 40px 30px 50px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255 255 255 / 0.5);
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 10;
+  color: black;
+}
+
+/* Frase */
+#frase {
+  font-size: 1.5rem;
+  min-height: 60px;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+/* Botão mudar frase */
+#botao {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+#botao:hover {
+  background-color: #222;
+}
+
+/* Botão mudar tema: formato de lua no canto superior direito dentro do container - tamanho menor */
+#btnTema {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;   /* menor */
+  height: 30px;  /* menor */
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow:
+    6px 0 0 0 white; /* "recorte" da lua ajustado */
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  border: none;
+  user-select: none;
+}
+
+/* Hover menor */
+#btnTema:hover {
+  background-color: #333;
+  box-shadow:
+    6px 0 0 0 #eee;
+}
+
+/* Tema escuro */
+body.tema-escuro {
+  background-color: black;
+  color: white;
+}
+
+body.tema-escuro .container {
+  background-color: #121212;
+  box-shadow: 0 0 20px rgba(255 255 255 / 0.15);
+  color: white;
+}
+
+body.tema-escuro #botao {
+  background-color: white;
+  color: black;
+}
+
+body.tema-escuro #botao:hover {
+  background-color: #ddd;
+}
+
+/* Botão tema no modo escuro: lua invertida (branca com "recorte" preto) */
+body.tema-escuro #btnTema {
+  background-color: white;
+  box-shadow:
+    6px 0 0 0 black;
+}
+
+body.tema-escuro #btnTema:hover {
+  background-color: #eee;
+  box-shadow:
+    6px 0 0 0 #222;
+}

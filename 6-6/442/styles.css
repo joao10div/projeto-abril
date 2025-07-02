@@ -1,0 +1,87 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.5s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Temas */
+body.tema-claro {
+  background-color: white;
+}
+
+body.tema-escuro {
+  background-color: #b3e0ff; /* Azul bebê */
+}
+
+/* Container central */
+.container {
+  position: relative;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  width: 300px;
+  transition: background-color 0.4s ease;
+}
+
+/* Título */
+.titulo {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Emoji */
+.emoji {
+  font-size: 5rem;
+  transition: transform 0.5s ease;
+  margin-bottom: 30px;
+}
+
+/* Botão girar */
+#botaoGirar {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#botaoGirar:hover {
+  background-color: #222;
+  transform: scale(1.05);
+}
+
+/* Botão de tema (lua) */
+#btnTema {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  background-color: black;
+  border-radius: 50%;
+  box-shadow: 6px 0 0 0 white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.tema-escuro #btnTema {
+  background-color: white;
+  box-shadow: 6px 0 0 0 black;
+}

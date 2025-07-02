@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordenação de Lista</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f2f5, #c9d6ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .lista-container {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 500px;
+      transition: all 0.3s ease;
+    }
+
+    .pessoa {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-radius: 12px;
+      background: #f9f9f9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 1.1rem;
+    }
+
+    .pessoa:hover {
+      background: #e3ecff;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #5a67d8, #6b46c1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ordenação de Lista</h1>
+
+  <div class="lista-container" id="lista">
+    <div class="pessoa"><strong>João</strong> <span>32 anos</span> <span>78 kg</span></div>
+    <div class="pessoa"><strong>Mariana</strong> <span>28 anos</span> <span>60 kg</span></div>
+    <div class="pessoa"><strong>Lucas</strong> <span>35 anos</span> <span>85 kg</span></div>
+    <div class="pessoa"><strong>Ana</strong> <span>24 anos</span> <span>55 kg</span></div>
+    <div class="pessoa"><strong>Carlos</strong> <span>30 anos</span> <span>90 kg</span></div>
+  </div>
+
+  <button onclick="ordenarPorNome()">Ordenar por Nome (A-Z)</button>
+
+  <script>
+    function ordenarPorNome() {
+      const lista = document.getElementById("lista");
+      const pessoas = Array.from(lista.getElementsByClassName("pessoa"));
+
+      pessoas.sort((a, b) => {
+        const nomeA = a.querySelector("strong").textContent.toLowerCase();
+        const nomeB = b.querySelector("strong").textContent.toLowerCase();
+        return nomeA.localeCompare(nomeB);
+      });
+
+      lista.innerHTML = "";
+      pessoas.forEach(pessoa => lista.appendChild(pessoa));
+    }
+  </script>
+
+</body>
+</html>
